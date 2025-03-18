@@ -7,7 +7,7 @@ module "eks" {
   version = "~> 19.0"
 
   cluster_name    = var.cluster_name
-  cluster_version = "1.28"
+  cluster_version = "1.29"
 
   cluster_endpoint_public_access = true
 
@@ -46,12 +46,12 @@ module "eks" {
     node-group-01 = {
       min_size     = 1
       max_size     = 10
-      desired_size = 3
+      desired_size = 1
     }
     node-group-02 = {
       min_size     = 1
       max_size     = 10
-      desired_size = 3
+      desired_size = 1
 
       instance_types = ["t3.large"]
       capacity_type  = "SPOT"
@@ -92,33 +92,33 @@ resource "kubernetes_namespace" "gateway" {
 }
 
 
-resource "kubernetes_namespace" "directory" {
-  metadata {
-    annotations = {
-      name = "directory"
-    }
+# resource "kubernetes_namespace" "directory" {
+#   metadata {
+#     annotations = {
+#       name = "directory"
+#     }
 
-    labels = {
-      app = "webapp"
-    }
+#     labels = {
+#       app = "webapp"
+#     }
 
-    name = "directory"
-  }
-}
+#     name = "directory"
+#   }
+# }
 
 
 
-resource "kubernetes_namespace" "analytics" {
-  metadata {
-    annotations = {
-      name = "analytics"
-    }
+# resource "kubernetes_namespace" "analytics" {
+#   metadata {
+#     annotations = {
+#       name = "analytics"
+#     }
 
-    labels = {
-      app = "webapp"
-    }
+#     labels = {
+#       app = "webapp"
+#     }
 
-    name = "analytics"
-  }
-}
+#     name = "analytics"
+#   }
+# }
 

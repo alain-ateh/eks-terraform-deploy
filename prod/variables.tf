@@ -15,7 +15,7 @@ variable "main-region" {
 
 variable "cluster_name" {
   type    = string
-  default = "prod-dominion-cluster"
+  default = "dominion-cluster"
 }
 
 variable "rolearn" {
@@ -29,7 +29,7 @@ variable "rolearn" {
 
 variable "env_name" {
   type    = string
-  default = "dev"
+  default = "prod"
 }
 
 ################################################################################

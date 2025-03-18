@@ -3,9 +3,11 @@ name: "Terraform-eks-Deployment"
 on:
   push:
     branches:
+    - main
     - development
   pull_request:
     branches:
+    - main
     - development
   workflow_dispatch:
     inputs:
@@ -20,7 +22,7 @@ on:
       action:
         description: "Terraform action to perform: apply or destroy"
         required: false
-        default: "apply"
+        default: "destroy"
 
 concurrency:
   group: terraform-${{ github.ref }}
@@ -35,7 +37,7 @@ jobs:
     env:
       TF_ENV: ${{ github.event.inputs.environment || 'prod' }}
       AWS_REGION: ${{ github.event.inputs.region || 'us-east-2' }}
-      TF_WORKING_DIR: environments/${{ github.event.inputs.environment || 'prod' }}
+      TF_WORKING_DIR: ./${{ github.event.inputs.environment || 'prod' }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
@@ -79,7 +81,7 @@ jobs:
       working-directory: ${{ env.TF_WORKING_DIR }}
       run: |
         set -e
-        terraform apply -auto-approve -lock=false
+        terraform destroy -auto-approve -lock=false
 
 
     - name: "Terraform Destroy"
