@@ -1,4 +1,4 @@
-# rolearn      = "arn:aws:iam::322266404742:role/dev-terraform-create-role"
+# userarn      = "arn:aws:iam::288761733697:user/alain"
 # env_name     = "prod"
 # cluster_name = "prod-dominion-cluster"
 #
