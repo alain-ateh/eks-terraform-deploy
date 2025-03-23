@@ -18,9 +18,9 @@ variable "cluster_name" {
   default = "dominion-cluster"
 }
 
-variable "rolearn" {
+variable "userearn" {
   description = "Add admin role to the aws-auth configmap"
-  default     = "arn:aws:iam::322266404742:role/terraform-create-role"
+  default     = "arn:aws:iam::288761733697:user/alain"
 }
 
 # ################################################################################
