@@ -3,11 +3,11 @@ provider "aws" {
   region  = "us-east-2"
 }
 
-data "aws_eks_cluster" {
+data "aws_eks_cluster" "this"{
   name = var.cluster_name
 }
 
-data "aws_eks_cluster_auth" {
+data "aws_eks_cluster_auth" "this"{
   name = var.cluster_name
 }
 
